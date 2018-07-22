@@ -5,7 +5,7 @@ public class Demo {
 	//SUCCESS!???
 	
 	public static void printHello(String name){
-		System.out.println("Hello "+name);
+		System.out.println("Hello Hello Hello"+name);
 	}
 	
 	public static void main(String[] args) {
