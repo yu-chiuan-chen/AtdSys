@@ -5,6 +5,11 @@ public class Demo {
 	//SUCCESS!???
 	
 	public static void printHello(String name){
+		System.out.println("Hello11111 "+name);
+		System.out.println("Hello12332112345678 "+name);
+	}
+	
+	public static void printHello2(String name){
 		System.out.println("Hello "+name);
 	}
 	
