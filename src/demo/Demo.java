@@ -11,6 +11,7 @@ public class Demo {
 	
 	public static void printHello2(String name){
 		System.out.println("Hello "+name);
+		System.out.println("Hello Hello Hello"+name);
 	}
 	
 	public static void main(String[] args) {
