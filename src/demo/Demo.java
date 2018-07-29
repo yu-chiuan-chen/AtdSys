@@ -2,7 +2,7 @@ package demo;
 
 public class Demo {
 	// Now you see me!!!!!!??
-	//SUCCESS!???
+	// SUCCESS!???
 	
 	public static void printHello(String name){
 		System.out.println("Hello11111 "+name);
@@ -17,8 +17,11 @@ public class Demo {
 	public static void main(String[] args) {
 		System.out.println("Hello world!!");
 		Demo.printHello("Amy!");
+		
+		// test Spring
+		SpringDemo.getInstance().testSpring();
+		// test Hibernate
+		HibernateDemo.getInstance().testHibernate();
 	}
-	
-	
 	
 }

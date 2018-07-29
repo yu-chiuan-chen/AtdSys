@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+    http://www.springframework.org/schema/beans/spring-beans.xsd
+    http://www.springframework.org/schema/context
+    http://www.springframework.org/schema/context/spring-context.xsd">
+
+	<!-- bean deployment START -->
+	<bean id="springDemoBean" class="demo.SpringDemoBean">
+		<property name="name" value="Hans" />
+	</bean>
+
+	<!-- hibernate deployment START -->
+	<!-- DataSource START -->
+	<bean id="demoDataSource"
+		class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
+		<property name="driverClassName" value="oracle.jdbc.driver.OracleDriver" />
+		<property name="url" value="jdbc:oracle:thin:@localhost:1521:xe" />
+		<property name="username" value="AA107G6" />
+		<property name="password" value="AA107G6" />
+
+		<property name="initialSize" value="3"></property>
+		<property name="maxActive" value="8"></property>
+		<property name="maxIdle" value="2"></property>
+		<property name="minIdle" value="1"></property>
+	</bean>
+	<!-- DataSource END -->
+
+	<!-- SessionFactory START -->
+	<bean id="sessionFactory" class="org.springframework.orm.hibernate5.LocalSessionFactoryBean">
+		<property name="dataSource" ref="demoDataSource" />
+		<property name="mappingResources">
+			<list>
+				<value>demo/HibernateDemo.hbm.xml</value>
+			</list>
+		</property>
+<!-- 		<property name="packagesToScan"> -->
+<!-- 			<array> -->
+<!-- 				<value>entities</value> -->
+<!-- 			</array> -->
+<!-- 		</property> -->
+		<property name="hibernateProperties">
+			<props>
+				<prop key="hibernate.dialect">
+					org.hibernate.dialect.Oracle12cDialect
+				</prop>
+				<prop key="hibernate.hbm2ddl.auto">
+					validate
+				</prop>
+				<prop key="hibernate.show_sql">
+					true
+				</prop>
+			</props>
+		</property>
+	</bean>
+	<!-- SessionFactory END -->
+	<!-- hibernate deployment END -->
+	<!-- bean deployment END -->
+</beans>
