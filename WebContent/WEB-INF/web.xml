@@ -8,16 +8,23 @@
 		<welcome-file>index.jsp</welcome-file>
 	</welcome-file-list>
 
-	<!-- the core of Struts2 is a filter START -->
+	<!-- Struts2的核心即是一filter -->
 	<filter>
 		<filter-name>struts2</filter-name>
 		<filter-class>org.apache.struts2.dispatcher.filter.StrutsPrepareAndExecuteFilter</filter-class>
-	</filter>
-	<!-- the core of Struts2 is a filter END -->
-	
+	</filter>	
 	<filter-mapping>
 		<filter-name>struts2</filter-name>
 		<url-pattern>*.do</url-pattern>
 	</filter-mapping>
+
+	<!-- web容器ContextLoader直接初始化Spring容器 -->
+	<context-param>
+       	<param-name>contextConfigLocation</param-name>
+        <param-value>classpath:applicationContext.xml</param-value>
+    </context-param>
+    <listener>
+        <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+    </listener> 
 
 </web-app>
