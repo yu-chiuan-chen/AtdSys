@@ -21,7 +21,7 @@ public class Demo {
 		// test Spring
 		SpringDemo.getInstance().testSpring();
 		// test Hibernate
-		HibernateDemo.getInstance().testHibernate();
+//		HibernateDemo.getInstance().testHibernate();
 	}
 	
 }
