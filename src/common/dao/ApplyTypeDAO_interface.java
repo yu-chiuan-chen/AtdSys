@@ -1,8 +1,11 @@
-package com.apply_type.model;
+package common.dao;
 
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+
+import common.vo.ApplyTypeVO;
+
 
 public interface ApplyTypeDAO_interface {
 	  public void insert(ApplyTypeVO empVO);

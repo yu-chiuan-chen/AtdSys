@@ -7,16 +7,33 @@
 	<!-- useful properties in developmental phase START -->
 	<constant name="struts.devMode" value="true" />
 	<constant name="struts.configuration.xml.reload" value="true" />
-	<!-- useful properties in developmental phase END -->
+<!-- 	useful properties in developmental phase END -->
 	<constant name="struts.i18n.encoding" value="UTF-8" />
-	<constant name="struts.action.extension" value="do" />
-	<constant name="struts.enable.SlashesInActionNames" value="true" />
+	<constant name="struts.action.extension" value="action,do" />
+	<constant name="struts.enable.SlashesInActionNames" value="true" />   
+<!-- 	用分層的寫法 -->
 	<constant name="struts.mapper.alwaysSelectFullNamespace" value="false"/>
 	
-	<package name="atd" namespace="/atd" extends="struts-default" strict-method-invocation="false">
-		<action name="*/*" class="demo.{1}Action" method="{2}">
-			<result>/atd/{1}/{2}.jsp</result>
+<!-- 	<package name="atd" namespace="/atd" extends="struts-default"> -->
+<!-- 		<action name="*/*/*/*" class="demo.{1}.{2}.{3}Action" method="{4}"> -->
+<!-- 			<result>/atd/{1}/{2}.jsp</result> -->
+<!-- 		</action> -->
+<!-- 		<action name="myAction" class="demo.HelloAction"> -->
+<!-- 			<result name="success">/hello.jsp</result> -->
+<!-- 		</action> -->
+
+<!-- 	</package> -->
+
+
+	<package name="myPackage" namespace="/myNamespace" extends="struts-default">
+
+		<action name="myAction" class="com.action.HelloAction">
+			<result name="success">/hello.jsp</result>
 		</action>
+
 	</package>
-	
+
+
+
+
 </struts>

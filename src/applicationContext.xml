@@ -8,9 +8,9 @@
     http://www.springframework.org/schema/context/spring-context.xsd">
 
 	<!-- bean deployment START -->
-	<bean id="springDemoBean" class="demo.SpringDemoBean">
-		<property name="name" value="Hans" />
-	</bean>
+<!-- 	<bean id="springDemoBean" class="demo.SpringDemoBean"> -->
+<!-- 		<property name="name" value="Hans" /> -->
+<!-- 	</bean> -->
 
 	<!-- hibernate deployment START -->
 	<!-- DataSource START -->
@@ -41,11 +41,11 @@
 <!-- 				<value>com/punch_record/model/PunchRecord.hbm.xml</value> -->
 			</list>
 		</property>
-		<property name="packagesToScan">
-			<array>
-				<value>entities</value>
-			</array>
-		</property>
+<!-- 		<property name="packagesToScan"> -->
+<!-- 			<array> -->
+<!-- 				<value>entities</value> -->
+<!-- 			</array> -->
+<!-- 		</property> -->
 		<property name="hibernateProperties">
 			<props>
 				<prop key="hibernate.dialect">

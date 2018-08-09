@@ -45,7 +45,8 @@ public class DemoAction extends ActionSupport
 		SessionFactory sf = (SessionFactory) wc.getBean("sessionFactory");
 		Session ss = sf.openSession();
 		Transaction ts = ss.beginTransaction();
-		TypedQuery<HibernateDemoVO> query = ss.createQuery(" SELECT friend_id FROM HibernateDemoVO WHERE mem_id = :mem_id ");
+//		TypedQuery<HibernateDemoVO> query = ss.createQuery(" SELECT friend_id FROM HibernateDemoVO WHERE mem_id = :mem_id ");
+		TypedQuery<HibernateDemoVO> query = ss.createQuery("FROM DepartmentVO");
 //		query.setParameter(0, 11000001);
 		query.setParameter("mem_id", 11000001);
 		List resultList = query.getResultList();
