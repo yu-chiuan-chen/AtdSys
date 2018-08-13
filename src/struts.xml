@@ -13,9 +13,21 @@
 	<constant name="struts.enable.SlashesInActionNames" value="true" />
 	<constant name="struts.mapper.alwaysSelectFullNamespace" value="false"/>
 	
-	<package name="atd" namespace="/atd" extends="struts-default" strict-method-invocation="false">
-		<action name="*/*" class="demo.{1}Action" method="{2}">
-			<result>/atd/{1}/{2}.jsp</result>
+	<!-- Struts2 基礎包配置 -->
+	<package name="atd-foundation" extends="struts-default,json-default">
+		<result-types>
+			<!-- Struts2 tiles 配置 -2 -->
+			<result-type name="tiles" class="org.apache.struts2.views.tiles.TilesResult"></result-type>
+		</result-types>
+	</package>
+	
+	<package name="demo" namespace="/demo" extends="atd-foundation" strict-method-invocation="false">
+		<action name="*/*" class="{1}SpringAction" method="{2}">
+			<result type="tiles">demo.{1}.{2}</result>
+			<result name="json" type="json">
+				<param name="excludeNullProperties">true</param>
+				<param name="root">jsonResult</param>
+			</result>
 		</action>
 	</package>
 	
