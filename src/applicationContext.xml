@@ -11,9 +11,9 @@
     http://www.springframework.org/schema/tx/spring-tx-3.0.xsd">
 
 	<!-- bean deployment START -->
-	<bean id="springDemoBean" class="demo.SpringDemoBean">
-		<property name="name" value="Hans" />
-	</bean>
+<!-- 	<bean id="springDemoBean" class="demo.SpringDemoBean"> -->
+<!-- 		<property name="name" value="Hans" /> -->
+<!-- 	</bean> -->
 
 	<!-- Hibernate deployment START -->
 	<!-- DataSource START -->
@@ -45,7 +45,7 @@
 <!-- 				<value>com/punch_record/model/PunchRecord.hbm.xml</value> -->
 			</list>
 		</property>
-		
+    
 		<property name="hibernateProperties">
 			<props>
 				<prop key="hibernate.dialect">org.hibernate.dialect.Oracle12cDialect</prop>

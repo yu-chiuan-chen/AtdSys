@@ -90,8 +90,11 @@ public class DemoAction extends ActionSupport
 		Session ss = HibernateUtil.getSessionFactory().getCurrentSession();
 		
 		Transaction ts = ss.beginTransaction();
-		TypedQuery<HibernateDemoVO> query = ss.createQuery(" SELECT friend_id FROM HibernateDemoVO WHERE mem_id = :mem_id ");
-		//query.setParameter(0, 11000001);
+
+//		TypedQuery<HibernateDemoVO> query = ss.createQuery(" SELECT friend_id FROM HibernateDemoVO WHERE mem_id = :mem_id ");
+		TypedQuery<HibernateDemoVO> query = ss.createQuery("FROM DepartmentVO");
+//		query.setParameter(0, 11000001);
+
 		query.setParameter("mem_id", 11000001);
 		List resultList = query.getResultList();
 		Iterator iterator =  resultList.iterator();
