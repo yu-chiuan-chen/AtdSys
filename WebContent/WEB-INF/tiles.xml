@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tiles-definitions PUBLIC
+   "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN"
+   "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+	
+<tiles-definitions>
+	<definition name="atdLayout" template="/atd/common/jsp/layout.jsp">
+	</definition>
+
+	<definition name="WILDCARD:demo.*.*" template="/atd/common/jsp/layout.jsp">
+		<put-attribute name="head" value="/atd/{1}/{2}_head.jsp" />
+		<put-attribute name="body" value="/atd/{1}/{2}.jsp" />
+	</definition>
+
+</tiles-definitions>	

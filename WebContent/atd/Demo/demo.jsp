@@ -1,13 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="s" uri="/struts-tags" %>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>SSH開發</title>
-</head>
-<body>
-	<h1>Hello, Struts</h1>
-	<h5><s:property value="msg" /></h5>
-</body>
-</html>
+
+<h1>Hello, Struts2</h1>
+<h5><s:property value="msg" /></h5>
+
+<input type="button" value="TestJson" onclick="testJson()" />
+<div id="msg"></div>
+

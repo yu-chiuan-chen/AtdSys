@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE log4j:configuration SYSTEM "log4j.dtd">
+<log4j:configuration xmlns:log4j='http://jakarta.apache.org/log4j/'>
+
+	<appender name="rootConsole" class="org.apache.log4j.ConsoleAppender">
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="[%p] %d{yyyy-MM-dd HH:mm:ss} [%t] %l - %m%n" />
+		</layout>
+	</appender>
+
+	<appender name="DemoFileLog" class="org.apache.log4j.RollingFileAppender">
+		<param name="append" value="false" />
+		<param name="maxFileSize" value="10KB" />
+		<param name="maxBackupIndex" value="5" />
+		<param name="DatePattern" value="'.'yyyy-MM-dd'.log'" />
+		<param name="file" value="D:/DemoLog.log" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="[%p] %d{yyyy-MM-dd HH:mm:ss} %C{2}:%L - %m%n" />
+		</layout>
+	</appender>
+
+	<!-- 命名logger用以取用 -->
+	<logger name="DemoLog" additivity="true">
+		<priority value="debug" />
+		<appender-ref ref="DemoFileLog" />
+	</logger>
+
+	<!-- 根logger -->
+	<root>
+		<priority value="debug" />
+		<appender-ref ref="rootConsole" />
+	</root>
+
+</log4j:configuration>

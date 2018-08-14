@@ -2,24 +2,27 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:tx="http://www.springframework.org/schema/tx"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans
     http://www.springframework.org/schema/beans/spring-beans.xsd
     http://www.springframework.org/schema/context
-    http://www.springframework.org/schema/context/spring-context.xsd">
+    http://www.springframework.org/schema/context/spring-context.xsd
+    http://www.springframework.org/schema/tx 
+    http://www.springframework.org/schema/tx/spring-tx-3.0.xsd">
 
 	<!-- bean deployment START -->
 <!-- 	<bean id="springDemoBean" class="demo.SpringDemoBean"> -->
 <!-- 		<property name="name" value="Hans" /> -->
 <!-- 	</bean> -->
 
-	<!-- hibernate deployment START -->
+	<!-- Hibernate deployment START -->
 	<!-- DataSource START -->
 	<bean id="demoDataSource"
 		class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
 		<property name="driverClassName" value="oracle.jdbc.driver.OracleDriver" />
 		<property name="url" value="jdbc:oracle:thin:@localhost:1521:xe" />
-		<property name="username" value="AD" />
-		<property name="password" value="AD" />
+		<property name="username" value="AA107G6" />
+		<property name="password" value="AA107G6" />
 
 		<property name="initialSize" value="3"></property>
 		<property name="maxActive" value="8"></property>
@@ -33,34 +36,47 @@
 		<property name="dataSource" ref="demoDataSource" />
 		<property name="mappingResources">
 			<list>
-				<value>com/department/model/Department.hbm.xml</value>
-				<value>com/employee/model/Employee.hbm.xml</value>
-				<value>com/apply_record/model/ApplyRecord.hbm.xml</value>
-				<value>com/apply_type/model/ApplyType.hbm.xml</value>
-				<value>com/emp_relation/model/EmpRelation.hbm.xml</value>
+				<value>demo/HibernateDemo.hbm.xml</value>
+<!-- 				<value>com/department/model/Department.hbm.xml</value> -->
+<!-- 				<value>com/employee/model/Employee.hbm.xml</value> -->
+<!-- 				<value>com/apply_record/model/ApplyRecord.hbm.xml</value> -->
+<!-- 				<value>com/apply_type/model/ApplyType.hbm.xml</value> -->
+<!-- 				<value>com/emp_relation/model/EmpRelation.hbm.xml</value> -->
 <!-- 				<value>com/punch_record/model/PunchRecord.hbm.xml</value> -->
 			</list>
 		</property>
-<!-- 		<property name="packagesToScan"> -->
-<!-- 			<array> -->
-<!-- 				<value>entities</value> -->
-<!-- 			</array> -->
-<!-- 		</property> -->
+    
 		<property name="hibernateProperties">
 			<props>
-				<prop key="hibernate.dialect">
-					org.hibernate.dialect.Oracle12cDialect
-				</prop>
-				<prop key="hibernate.hbm2ddl.auto">
-					validate
-				</prop>
-				<prop key="hibernate.show_sql">
-					true
-				</prop>
+				<prop key="hibernate.dialect">org.hibernate.dialect.Oracle12cDialect</prop>
+				<prop key="hibernate.hbm2ddl.auto">validate</prop>
+				<prop key="hibernate.show_sql">true</prop>
+				<prop key="hibernate.current_session_context_class">thread</prop >
 			</props>
 		</property>
 	</bean>
 	<!-- SessionFactory END -->
-	<!-- hibernate deployment END -->
+	
+	<!-- 事務管理配置 START -->
+	<bean id="txManager" class="org.springframework.orm.hibernate5.HibernateTransactionManager">
+		<property name="sessionFactory" ref="sessionFactory"/>
+	</bean>
+	<!-- 啟用事務註解 -->
+	<tx:annotation-driven transaction-manager="txManager" mode="proxy" proxy-target-class="true"/>
+	<!-- 事務管理配置 END -->
+	
+	<bean id="hbUtil" class="com.hibernate.util.HibernateUtil">
+		<property name="sessionFactory" ref="sessionFactory"/>
+	</bean>
+	
+	<!-- Hibernate deployment END -->
+	
+	
+	<!-- Struts2 deployment START -->
+	<bean id="demoSvc" class="demo.DemoService" />
+	<bean id="DemoSpringAction" scope="prototype" class="demo.DemoAction">
+		<property name="demoSvc" ref="demoSvc" />
+	</bean>	
+	<!-- Struts2 deployment END -->
 	<!-- bean deployment END -->
 </beans>

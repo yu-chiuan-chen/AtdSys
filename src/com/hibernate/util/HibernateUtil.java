@@ -5,11 +5,14 @@ import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
+import org.springframework.transaction.annotation.Transactional;
 
+@Transactional
 public class HibernateUtil {
 
-    private static final SessionFactory sessionFactory;
+    private static SessionFactory sessionFactory;
 
+    /*
     static {
         try {
             // Create the SessionFactory from hibernate.cfg.xml
@@ -24,9 +27,15 @@ public class HibernateUtil {
             throw new ExceptionInInitializerError(ex);
         }
     }
+    */
 
+	public final void setSessionFactory(SessionFactory sessionFactory) {
+		System.out.println("sessionFactory is set!!");
+		HibernateUtil.sessionFactory = sessionFactory;
+	}
+    
     public static SessionFactory getSessionFactory() {
         return sessionFactory;
     }
-
+    
 }
