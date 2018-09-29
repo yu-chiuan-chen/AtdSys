@@ -37,4 +37,18 @@
 		<listener-class>org.apache.struts2.tiles.StrutsTilesListener</listener-class>
 	</listener>
 	
+	
+	<filter>
+		<filter-name>filterUser</filter-name>
+		<filter-class>filters.filterUser</filter-class>
+	</filter>
+	<filter-mapping>
+		<filter-name>filterUser</filter-name>
+		<url-pattern>/atd/users/*</url-pattern>
+		<dispatcher>REQUEST</dispatcher>
+		<dispatcher>FORWARD</dispatcher>
+		<dispatcher>INCLUDE</dispatcher>
+		<dispatcher>ERROR</dispatcher>
+	</filter-mapping>
+	
 </web-app>

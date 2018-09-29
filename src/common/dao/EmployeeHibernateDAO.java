@@ -18,7 +18,7 @@ public class EmployeeHibernateDAO implements EmployeeDAO_interface {
 
 	@Override
 	public void insert(EmployeeVO empVO) {
-		Session session = HibernateUtil.getSessionFactory().openSession();
+		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
 		try {
 			session.beginTransaction();
 			session.saveOrUpdate(empVO);
@@ -31,7 +31,7 @@ public class EmployeeHibernateDAO implements EmployeeDAO_interface {
 
 	@Override
 	public void update(EmployeeVO empVO) {
-		Session session = HibernateUtil.getSessionFactory().openSession();
+		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
 		try {
 			session.beginTransaction();
 			session.saveOrUpdate(empVO);
@@ -44,7 +44,7 @@ public class EmployeeHibernateDAO implements EmployeeDAO_interface {
 
 	@Override
 	public void delete(Integer emp_no) {
-		Session session = HibernateUtil.getSessionFactory().openSession();
+		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
 		try {
 			session.beginTransaction();
 
@@ -76,7 +76,7 @@ public class EmployeeHibernateDAO implements EmployeeDAO_interface {
 	@Override
 	public EmployeeVO findByPrimaryKey(Integer empno) {
 		EmployeeVO empVO = null;
-		Session session = HibernateUtil.getSessionFactory().openSession();
+		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
 		try {
 			session.beginTransaction();
 			empVO = (EmployeeVO) session.get(EmployeeVO.class, empno);
@@ -84,6 +84,8 @@ public class EmployeeHibernateDAO implements EmployeeDAO_interface {
 		} catch (RuntimeException ex) {
 			session.getTransaction().rollback();
 			throw ex;
+		} catch (Exception e) {
+			e.printStackTrace();
 		}
 		return empVO;
 	}
@@ -91,7 +93,7 @@ public class EmployeeHibernateDAO implements EmployeeDAO_interface {
 	@Override
 	public List<EmployeeVO> getAll() {
 		List<EmployeeVO> list = null;
-		Session session = HibernateUtil.getSessionFactory().openSession();
+		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
 		try {
 			session.beginTransaction();
 			Query query = session.createQuery(GET_ALL_STMT);
@@ -107,7 +109,7 @@ public class EmployeeHibernateDAO implements EmployeeDAO_interface {
 	@Override
 	public List<EmployeeVO> getAll(Map<String, String[]> map) {
 		List<EmployeeVO> list = null;
-		Session session = HibernateUtil.getSessionFactory().openSession();
+		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
 		try {
 			session.beginTransaction();
 			list = HibernateUtil_CompositeQuery_Emp2.getAllC(map);

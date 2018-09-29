@@ -3,7 +3,7 @@
 	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 	"http://hibernate.sourceforge.net/hibernate-mapping-5.0.dtd">
 <hibernate-mapping >
-	<class name="com.department.model.DepartmentVO" table="department">
+	<class name="common.vo.DepartmentVO" table="department">
 		<id name="dep_no" column="dep_no" type="java.lang.Integer">
 			<generator class="increment"></generator>
 		</id>
@@ -15,7 +15,7 @@
 			<key>
 				<column name="dep_no" />
 			</key>
-			<one-to-many class="com.employee.model.EmployeeVO" />
+			<one-to-many class="common.vo.EmployeeVO" />
 		</set>
 
 	</class>

@@ -18,7 +18,7 @@ public class DepartmentHibernateDAO implements DepartmentDAO_interface {
 
 	@Override
 	public void insert(DepartmentVO depVO) {
-		Session session = HibernateUtil.getSessionFactory().openSession();
+		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
 		try {
 			session.beginTransaction();
 			session.saveOrUpdate(depVO);
@@ -31,7 +31,7 @@ public class DepartmentHibernateDAO implements DepartmentDAO_interface {
 
 	@Override
 	public void update(DepartmentVO depVO) {
-		Session session = HibernateUtil.getSessionFactory().openSession();
+		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
 		try {
 			session.beginTransaction();
 			session.saveOrUpdate(depVO);
@@ -44,7 +44,7 @@ public class DepartmentHibernateDAO implements DepartmentDAO_interface {
 
 	@Override
 	public void delete(Integer depno) {
-		Session session = HibernateUtil.getSessionFactory().openSession();
+		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
 		try {
 			session.beginTransaction();
 			DepartmentVO DepartmentVO = (DepartmentVO) session.get(DepartmentVO.class, depno);
@@ -60,7 +60,7 @@ public class DepartmentHibernateDAO implements DepartmentDAO_interface {
 	@Override
 	public DepartmentVO findByPrimaryKey(Integer depno) {
 		DepartmentVO DepartmentVO = null;
-		Session session = HibernateUtil.getSessionFactory().openSession();
+		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
 		try {
 			session.beginTransaction();
 			DepartmentVO = (DepartmentVO) session.get(DepartmentVO.class, depno);
@@ -75,7 +75,7 @@ public class DepartmentHibernateDAO implements DepartmentDAO_interface {
 	@Override
 	public List<DepartmentVO> getAll() {
 		List<DepartmentVO> list = null;
-		Session session = HibernateUtil.getSessionFactory().openSession();
+		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
 		try {
 			session.beginTransaction();
 			Query<DepartmentVO> query = session.createQuery(GET_ALL_STMT);

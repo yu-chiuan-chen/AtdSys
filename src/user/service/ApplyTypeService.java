@@ -10,11 +10,11 @@ import common.vo.ApplyTypeVO;
 import common.dao.ApplyTypeDAO_interface;
 import common.dao.ApplyTypeHibernateDAO;
 
-public class ApplyTyptService {
+public class ApplyTypeService {
 
 	private ApplyTypeDAO_interface dao;
 
-	public ApplyTyptService() {
+	public ApplyTypeService() {
 		dao = new ApplyTypeHibernateDAO();
 	}
 

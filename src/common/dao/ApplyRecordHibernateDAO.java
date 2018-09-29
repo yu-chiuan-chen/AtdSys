@@ -11,6 +11,7 @@ import org.hibernate.Query;
 import org.hibernate.Session;
 
 import common.vo.DepartmentVO;
+import common.vo.PunchRecordVO;
 import common.dao.EmployeeHibernateDAO;
 import common.vo.ApplyRecordVO;
 import common.utils.HibernateUtil;
@@ -18,10 +19,12 @@ import common.utils.HibernateUtil;
 public class ApplyRecordHibernateDAO implements ApplyRecordDAO_interface {
 
 	private static final String GET_ALL_STMT = "from ApplyRecordVO order by Ar_no";
+	private static final String GET_USER_RECORD = "from ApplyRecordVO where emp_no =";
+
 
 	@Override
 	public void insert(ApplyRecordVO ARVO) {
-		Session session = HibernateUtil.getSessionFactory().openSession();
+		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
 		try {
 			session.beginTransaction();
 			session.saveOrUpdate(ARVO);
@@ -34,7 +37,7 @@ public class ApplyRecordHibernateDAO implements ApplyRecordDAO_interface {
 
 	@Override
 	public void update(ApplyRecordVO ARVO) {
-		Session session = HibernateUtil.getSessionFactory().openSession();
+		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
 		try {
 			session.beginTransaction();
 			session.saveOrUpdate(ARVO);
@@ -47,7 +50,7 @@ public class ApplyRecordHibernateDAO implements ApplyRecordDAO_interface {
 
 	@Override
 	public void delete(Integer Ar_no) {
-		Session session = HibernateUtil.getSessionFactory().openSession();
+		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
 		try {
 			session.beginTransaction();
 
@@ -79,7 +82,7 @@ public class ApplyRecordHibernateDAO implements ApplyRecordDAO_interface {
 	@Override
 	public ApplyRecordVO findByPrimaryKey(Integer empno) {
 		ApplyRecordVO ARVO = null;
-		Session session = HibernateUtil.getSessionFactory().openSession();
+		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
 		try {
 			session.beginTransaction();
 			ARVO = (ApplyRecordVO) session.get(ApplyRecordVO.class, empno);
@@ -94,7 +97,7 @@ public class ApplyRecordHibernateDAO implements ApplyRecordDAO_interface {
 	@Override
 	public List<ApplyRecordVO> getAll() {
 		List<ApplyRecordVO> list = null;
-		Session session = HibernateUtil.getSessionFactory().openSession();
+		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
 		try {
 			session.beginTransaction();
 			Query query = session.createQuery(GET_ALL_STMT);
@@ -106,11 +109,29 @@ public class ApplyRecordHibernateDAO implements ApplyRecordDAO_interface {
 		}
 		return list;
 	}
+	
+	
 
+	@Override
+	public List<ApplyRecordVO> findListByPrimaryKey(Integer empno){
+		List<ApplyRecordVO> list = null;
+		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+		try {
+			session.beginTransaction();
+			Query query = session.createQuery(GET_USER_RECORD+empno);
+			list = query.list();
+			session.getTransaction().commit();
+		} catch (RuntimeException ex) {
+			session.getTransaction().rollback();
+			throw ex;
+		}
+		return list;
+		
+	}
 	@Override
 	public List<ApplyRecordVO> getAll(Map<String, String[]> map) {
 		List<ApplyRecordVO> list = null;
-		Session session = HibernateUtil.getSessionFactory().openSession();
+		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
 		try {
 			session.beginTransaction();
 			Query query = session.createQuery(GET_ALL_STMT);
@@ -126,41 +147,41 @@ public class ApplyRecordHibernateDAO implements ApplyRecordDAO_interface {
 	public static void main(String[] args) {
 
 		ApplyRecordHibernateDAO dao = new ApplyRecordHibernateDAO();
-
-		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HHmmss");
-		SimpleDateFormat sdf2 = new SimpleDateFormat("yyMMdd HH:mm:ss.SSS");
-		
-		Calendar cc = Calendar.getInstance();
-		
-		
-		
-		try {
-			Date dd = sdf.parse("2001-03-16 111111");
-			
-			cc.setTime(dd);
-			cc.add(Calendar.DATE, -4);
-			cc.add(Calendar.HOUR, -4);
-			
-			System.out.println("sdf2= "+ sdf2.format(cc.getTime()));
-		} catch (ParseException e1) {
-			e1.printStackTrace();
-		}
-		
-		// ● 新增
-		 ApplyRecordVO ARVO = new ApplyRecordVO();
-		 ARVO.setEmp_no(3);
-		 ARVO.setAt_no(2);
-		 try {
-			ARVO.setApp_date(sdf.parse("2001-01-15 111111"));
-			ARVO.setSta_time(sdf.parse("2001-03-15 111111"));
-			ARVO.setEnd_time(sdf.parse("2001-03-16 111111"));
-		} catch (ParseException e) {
-			e.printStackTrace();
-		}
-		 ARVO.setReview(0);
-		 ARVO.setRemarks("無");
-		 ARVO.setReason("有事");
-		 dao.insert(ARVO);
+//
+//		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HHmmss");
+//		SimpleDateFormat sdf2 = new SimpleDateFormat("yyMMdd HH:mm:ss.SSS");
+//		
+//		Calendar cc = Calendar.getInstance();
+//		
+//		
+//		
+//		try {
+//			Date dd = sdf.parse("2001-03-16 111111");
+//			
+//			cc.setTime(dd);
+//			cc.add(Calendar.DATE, -4);
+//			cc.add(Calendar.HOUR, -4);
+//			
+//			System.out.println("sdf2= "+ sdf2.format(cc.getTime()));
+//		} catch (ParseException e1) {
+//			e1.printStackTrace();
+//		}
+//		
+//		// ● 新增
+//		 ApplyRecordVO ARVO = new ApplyRecordVO();
+//		 ARVO.setEmp_no(3);
+//		 ARVO.setAt_no(2);
+//		 try {
+//			ARVO.setApp_date(sdf.parse("2001-01-15 111111"));
+//			ARVO.setSta_time(sdf.parse("2001-03-15 111111"));
+//			ARVO.setEnd_time(sdf.parse("2001-03-16 111111"));
+//		} catch (ParseException e) {
+//			e.printStackTrace();
+//		}
+//		 ARVO.setReview(0);
+//		 ARVO.setRemarks("無");
+//		 ARVO.setReason("有事");
+//		 dao.insert(ARVO);
 
 		// ● 修改
 //		 ApplyRecordVO ARVO = new ApplyRecordVO();
@@ -194,7 +215,7 @@ public class ApplyRecordHibernateDAO implements ApplyRecordDAO_interface {
 //		 System.out.println("\n---------------------");
 
 		// ● 查詢-getAll (多方emp2.hbm.xml必須設為lazy="false")(優!)
-//		List<ApplyRecordVO> list = dao.getAll();
+//		List<ApplyRecordVO> list = dao.findListByPrimaryKey(1);
 //		for (ApplyRecordVO ARVO : list) {
 //			System.out.print(ARVO.getAr_no() + ",");
 //			System.out.print(ARVO.getEmp_no() + ",");

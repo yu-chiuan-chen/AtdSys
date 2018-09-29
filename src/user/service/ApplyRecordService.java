@@ -6,7 +6,8 @@ import java.util.Map;
 import java.util.Date;
 
 import common.vo.ApplyRecordVO;
-
+import common.vo.EmployeeVO;
+import common.vo.PunchRecordVO;
 import common.dao.ApplyRecordDAO_interface;
 import common.dao.ApplyRecordHibernateDAO;
 
@@ -22,7 +23,8 @@ public class ApplyRecordService {
 			Integer review, String remarks, String reason) {
 
 		ApplyRecordVO ARVO = new ApplyRecordVO();
-		ARVO.setEmp_no(emp_no);
+		EmployeeVO empVO = new EmployeeVO();
+		ARVO.setEmpVO(empVO);
 		ARVO.setAt_no(at_no);
 		ARVO.setApp_date(app_date);
 		ARVO.setSta_time(sta_time);
@@ -39,8 +41,9 @@ public class ApplyRecordService {
 			Integer review, String remarks, String reason) {
 
 		ApplyRecordVO ARVO = new ApplyRecordVO();
+		EmployeeVO empVO = new EmployeeVO();
 		ARVO.setAr_no(ar_no);
-		ARVO.setEmp_no(emp_no);
+		ARVO.setEmpVO(empVO);
 		ARVO.setAt_no(at_no);
 		ARVO.setApp_date(app_date);
 		ARVO.setSta_time(sta_time);
@@ -59,6 +62,10 @@ public class ApplyRecordService {
 
 	public ApplyRecordVO getOneAR(Integer Ar_no) {
 		return dao.findByPrimaryKey(Ar_no);
+	}
+	
+	public List<ApplyRecordVO> getARs(Integer empno) {
+		return dao.findListByPrimaryKey(empno);
 	}
 
 	public List<ApplyRecordVO> getAll() {

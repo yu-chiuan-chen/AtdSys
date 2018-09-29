@@ -1,16 +1,18 @@
 package common.vo;
 
+import java.io.Serializable;
 import java.util.Date;
 
 import common.vo.ApplyTypeVO;
 import common.vo.EmployeeVO;
 
-public class PunchRecordVO {
+
+public class PunchRecordVO implements Serializable{
 	private Integer pr_no;
 	private Date pr_time;
+	private Integer type_no;
 	private String remarks;
 	private EmployeeVO empVO ;
-	private ApplyTypeVO ATVO ;
 	public Integer getPr_no() {
 		return pr_no;
 	}
@@ -22,6 +24,12 @@ public class PunchRecordVO {
 	}
 	public void setPr_time(Date pr_time) {
 		this.pr_time = pr_time;
+	}
+	public Integer getType_no() {
+		return type_no;
+	}
+	public void setType_no(Integer type_no) {
+		this.type_no = type_no;
 	}
 	public String getRemarks() {
 		return remarks;
@@ -35,11 +43,5 @@ public class PunchRecordVO {
 	public void setEmpVO(EmployeeVO empVO) {
 		this.empVO = empVO;
 	}
-	public ApplyTypeVO getATVO() {
-		return ATVO;
-	}
-	public void setATVO(ApplyTypeVO aTVO) {
-		ATVO = aTVO;
-	}
-
+	
 }

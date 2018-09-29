@@ -49,7 +49,7 @@ public class HibernateUtil_CompositeQuery_Emp2 {
 
 	public static List<EmployeeVO> getAllC(Map<String, String[]> map) {
 		
-		Session session = HibernateUtil.getSessionFactory().openSession();
+		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
 		Transaction tx = session.beginTransaction();
 		List<EmployeeVO> list = null;
 		try {

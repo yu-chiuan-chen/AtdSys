@@ -12,6 +12,10 @@
 	<tiles:insertAttribute name="head"/>
 </head>
 <body>
+	<div style="background:yellow;">
+	
+	</div>
+
 	<tiles:insertAttribute name="body"/>
 </body>
 </html>
