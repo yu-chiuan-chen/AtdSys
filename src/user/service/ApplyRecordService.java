@@ -10,20 +10,24 @@ import common.vo.EmployeeVO;
 import common.vo.PunchRecordVO;
 import common.dao.ApplyRecordDAO_interface;
 import common.dao.ApplyRecordHibernateDAO;
+import common.dao.EmployeeDAO_interface;
+import common.dao.EmployeeHibernateDAO;
 
 public class ApplyRecordService {
 
 	private ApplyRecordDAO_interface dao;
+	private EmployeeDAO_interface empDao;
 
 	public ApplyRecordService() {
 		dao = new ApplyRecordHibernateDAO();
+		empDao = new EmployeeHibernateDAO();
 	}
 
 	public ApplyRecordVO addAR(Integer emp_no, Integer at_no, Date app_date, Date sta_time, Date end_time,
 			Integer review, String remarks, String reason) {
 
 		ApplyRecordVO ARVO = new ApplyRecordVO();
-		EmployeeVO empVO = new EmployeeVO();
+		EmployeeVO empVO = empDao.findByPrimaryKey(emp_no);
 		ARVO.setEmpVO(empVO);
 		ARVO.setAt_no(at_no);
 		ARVO.setApp_date(app_date);

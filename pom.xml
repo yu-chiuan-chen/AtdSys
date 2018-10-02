@@ -1,5 +1,4 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>AtdSys</groupId>
@@ -115,6 +114,19 @@
 			<artifactId>log4j</artifactId>
 			<version>1.2.17</version>
 		</dependency>
+		<!-- https://mvnrepository.com/artifact/org.java-websocket/Java-WebSocket -->
+<!-- 		<dependency> -->
+<!-- 			<groupId>org.java-websocket</groupId> -->
+<!-- 			<artifactId>Java-WebSocket</artifactId> -->
+<!-- 			<version>1.3.0</version> -->
+<!-- 		</dependency> -->
+		<!-- https://mvnrepository.com/artifact/org.apache.tomcat/tomcat-websocket -->
+		<dependency>
+			<groupId>org.apache.tomcat</groupId>
+			<artifactId>tomcat-websocket</artifactId>
+			<version>8.5.32</version>
+		</dependency>
+
 
 
 	</dependencies>

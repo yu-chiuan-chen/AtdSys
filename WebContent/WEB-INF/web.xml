@@ -51,4 +51,10 @@
 		<dispatcher>ERROR</dispatcher>
 	</filter-mapping>
 	
+	
+	
+	 <context-param>
+    <param-name>org.apache.tomcat.websocket.textBufferSize</param-name>
+    <param-value>307200</param-value>
+  </context-param>
 </web-app>
