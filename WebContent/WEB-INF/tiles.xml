@@ -12,8 +12,8 @@
 <!-- 		<put-attribute name="body" value="/atd/{1}/{2}.jsp" /> -->
 <!-- 	</definition> -->
 	
-<!-- 	<definition name="WILDCARD:login.*.*" extends="/atd/common/layout.jsp"> -->
-	<definition name="atdLayout" template="/atd/common/layout.jsp">
+<!-- 	<definition name="atdLayout" template="/atd/common/layout.jsp"> -->
+	<definition name="WILDCARD:login.*.*" extends="/atd/common/layout.jsp">
 		<put-attribute name="title" value="This is goodjob!" />
 		<put-attribute name="body" value="/atd/{1}/{2}.jsp" />
 	</definition>

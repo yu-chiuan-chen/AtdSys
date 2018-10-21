@@ -88,7 +88,7 @@ pageContext.setAttribute("userVO",userVO);
 			</div>
 		</div>
 
-	<tiles:insertAttribute name="body"/>
+	<tiles:insertAttribute name="body"/> 
 	</div>
 </body>
 </html>
