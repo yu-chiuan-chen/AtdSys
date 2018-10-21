@@ -1,7 +1,8 @@
 $(function() {
-	$("#btnLogin").button().click(function() {
+	$("#btnLogin").click(function() {
 		$.ajax({
-			url : "user/loginAction.action", // 存取Json的網址
+			url : "js/Common/login.action", // 存取Json的網址
+//			url : "user/loginAction.action", // 存取Json的網址
 			type : "POST",
 			cache : false,
 			dataType : 'json',
@@ -11,6 +12,7 @@ $(function() {
 			},
 //			contentType : "application/json",
 			success : function(data) {
+				alert("@@@@@");
 				if (data.status.match('success')) {
 					$('#form1').submit();
 				} else {
@@ -20,6 +22,7 @@ $(function() {
 			},
 
 			error : function(xhr, ajaxOptions, thrownError) {
+				alert("%%%%%%%%%%%%%%");
 				alert(xhr.status);
 				alert(thrownError);
 			}

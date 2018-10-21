@@ -17,9 +17,9 @@ if (typeof (indexJs) == 'undefined') {
 	
 	
 	//上班打卡
-	$("#onDuty").button().click(function() {
+	$("#onDuty").click(function() {
 		$.ajax({
-			url : "user/onDutyAction.action", // 存取Json的網址
+			url : "onDutyAction.action", // 存取Json的網址
 			type : "POST",
 			cache : false,
 			dataType : 'json',
@@ -46,9 +46,9 @@ if (typeof (indexJs) == 'undefined') {
 	
 	
 	//下班打卡
-	$("#offDuty").button().click(function() {
+	$("#offDuty").click(function() {
 		$.ajax({
-			url : "user/offDutyAction.action", // 存取Json的網址
+			url : "offDutyAction.action", // 存取Json的網址
 			type : "POST",
 			cache : false,
 			dataType : 'json',
@@ -73,9 +73,9 @@ if (typeof (indexJs) == 'undefined') {
 	});
 	
 	//登出
-	$("#logOut").button().click(function() {
+	$("#logOut").click(function() {
 		$.ajax({
-			url : "user/logOutAction.action", // 存取Json的網址
+			url : "logOutAction.action", // 存取Json的網址
 			type : "POST",
 			cache : false,
 			dataType : 'json',
@@ -99,7 +99,7 @@ if (typeof (indexJs) == 'undefined') {
 //	//取請假資料
 //	var getApplyRecordList =(function() {
 //		$.ajax({
-//			url : "user/getApplyRecordAction.action", // 存取Json的網址
+//			url : "getApplyRecordAction.action", // 存取Json的網址
 //			type : "POST",
 //			cache : false,
 //			dataType : 'json',
@@ -158,7 +158,7 @@ if (typeof (indexJs) == 'undefined') {
 	//行事曆
 	indexJs.calendar = function() {
 		$.ajax({
-		url : "user/getUserRecordAction.action", // 存取Json的網址
+		url : "getUserRecordAction.action", // 存取Json的網址
 		type : "POST",
 		cache : false,
 		dataType : 'json',
@@ -233,7 +233,7 @@ if (typeof (indexJs) == 'undefined') {
 		//取得請假類別清單
 		indexJs.getApplyTypeList = function() {
 			$.ajax({
-			url : "user/getApplyTypeAction.action", // 存取Json的網址
+			url : "getApplyTypeAction.action", // 存取Json的網址
 			type : "POST",
 			cache : false,
 			dataType : 'json',
@@ -258,7 +258,7 @@ if (typeof (indexJs) == 'undefined') {
 			
 			
 		//請假申請的dialog
-		$("#applyLeaveBtn").button().click(function() {
+		$("#applyLeaveBtn").click(function() {
 		       var modal = $('#modal');
 		       modal.empty();
 		      
@@ -321,7 +321,7 @@ if (typeof (indexJs) == 'undefined') {
 		           	var reason=$("#reason").val();
 		           	
 		               $.ajax({
-		       			url : "user/addapplyRecordAction.action",
+		       			url : "addapplyRecordAction.action",
 		       			type : "POST",
 		       			cache : false,
 		       			dataType : 'json',

@@ -10,7 +10,7 @@
 // 	 alert("host="+host);
 // 	 alert("path="+path);
 // 	 alert("webCtx="+webCtx);
-	 alert("endPointURL="+endPointURL);
+//	 alert("endPointURL="+endPointURL);
 // 	 alert("statusOutput="+statusOutput);
 // 	 alert("webSocket="+webSocket);
 	

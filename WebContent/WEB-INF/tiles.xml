@@ -4,11 +4,15 @@
    "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
 	
 <tiles-definitions>
-	<definition name="atdLayout" template="/atd/common/jsp/layout.jsp">
+	<definition name="atdLayout" template="/atd/common/layout.jsp">
 	</definition>
 
-	<definition name="WILDCARD:demo.*.*" template="/atd/common/jsp/layout.jsp">
+	<definition name="WILDCARD:demo.*.*" template="/atd/common/layout.jsp">
 		<put-attribute name="head" value="/atd/{1}/{2}_head.jsp" />
+		<put-attribute name="body" value="/atd/{1}/{2}.jsp" />
+	</definition>
+	
+	<definition name="WILDCARD:login.*.*" extends="atdLayout">
 		<put-attribute name="body" value="/atd/{1}/{2}.jsp" />
 	</definition>
 

@@ -33,18 +33,11 @@ public class filterUser implements Filter {
 		EmployeeVO user = (EmployeeVO) session.getAttribute("userVO");
 		System.out.println("進入filter");
 		if (user == null) {
-
-//			session.setAttribute("pageReq", req.getServletPath());
-
-			res.sendRedirect(req.getContextPath() + "/atd/common/jsp/login.jsp");
-
+			res.sendRedirect(req.getContextPath() + "/atd/common/login.jsp");
 			return;
-
 		} else {
-
 			chain.doFilter(request, response);
 		}
-
 	}
 
 	public void init(FilterConfig fConfig) throws ServletException {

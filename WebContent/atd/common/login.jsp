@@ -13,7 +13,7 @@
 			body{
 				margin:0px;
 				padding:0px;
-				background:#fff url("../images/login.jpg") center center fixed no-repeat;
+				background:#fff url("images/login.jpg") center center fixed no-repeat;
 				background-size: cover;　
 
 			}    
@@ -33,7 +33,7 @@
   
   <!-- 登入首頁開始 -->
 <%-- 			<form METHOD="post" ACTION="<%=request.getContextPath()%>/atd/users/jsp/index.jsp" id="form1" namespace="/aaa">	 --%>
-			<form METHOD="post" ACTION="<%=request.getContextPath()%>/atd/common/Index/init.action" id="form1">	
+			<form METHOD="post" ACTION="<%=request.getContextPath()%>/atd/Index/aaa.jsp" id="form1">	
 				<div class="container" style="width:500px;margin-top:100px; ">
 						
 					    <div class="panel" id="login" >

@@ -19,9 +19,9 @@ private static final Set<Session> allSessions = Collections.synchronizedSet(new 
 	@OnOpen
 	public void onOpen(@PathParam("myName") String myName, @PathParam("myRoom") int myRoom, Session userSession) throws IOException {
 		allSessions.add(userSession);
-		System.out.println(userSession.getId() + ": �w�s�u");
-		System.out.println(myName + ": �w�s�u");
-		System.out.println(myRoom + ": �и�");
+		System.out.println(userSession.getId() + ": userID");
+		System.out.println(myName + ": 名稱");
+		System.out.println(myRoom + ": 房號");
 //		userSession.getBasicRemote().sendText("WebSocket �s�u���\");
 	}
 

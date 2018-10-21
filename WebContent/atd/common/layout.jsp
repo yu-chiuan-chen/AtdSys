@@ -13,7 +13,6 @@
 </head>
 <body>
 	<div style="background:yellow;">
-	
 	</div>
 
 	<tiles:insertAttribute name="body"/>
@@ -21,6 +20,6 @@
 </html>
 
 <script>
-console.log('in~~~~~~');
+console.log('in~~~~~~!!!!!!!!!!!!!!!!!!!!!!!!!!!!!');
 
 </script>
