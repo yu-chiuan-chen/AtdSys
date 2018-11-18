@@ -44,8 +44,7 @@
 	</filter>
 	<filter-mapping>
 		<filter-name>filterUser</filter-name>
-		<url-pattern>/atd/Index/*</url-pattern>
-<!-- 		<url-pattern>/atd/users/*</url-pattern> -->
+		<url-pattern>/atd/userss/*</url-pattern>
 		<dispatcher>REQUEST</dispatcher>
 		<dispatcher>FORWARD</dispatcher>
 		<dispatcher>INCLUDE</dispatcher>
