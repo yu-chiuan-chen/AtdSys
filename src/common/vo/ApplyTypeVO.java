@@ -4,7 +4,7 @@ import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
 
-import com.employee.model.EmployeeVO;
+import common.vo.EmployeeVO;
 
 public class ApplyTypeVO implements Serializable{
 	private Integer at_no;

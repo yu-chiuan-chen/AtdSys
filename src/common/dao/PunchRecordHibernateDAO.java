@@ -6,21 +6,23 @@ import java.util.Set;
 
 import org.hibernate.Query;
 import org.hibernate.Session;
-
 import common.utils.HibernateUtil;
-import common.vo.EmployeeVO;
-import common.vo.PunchRecordVO;
+import common.vo.*;
+import user.service.*;
 
 public class PunchRecordHibernateDAO implements PunchRecordDAO_interface {
 
 	private static final String GET_ALL_STMT = "from PunchRecordVO order by pr_no";
+	private static final String GET_USER_RECORD = "from PunchRecordVO where emp_no =";
 
 	@Override
 	public void insert(PunchRecordVO PRVO) {
-		Session session = HibernateUtil.getSessionFactory().openSession();
+		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
 		try {
 			session.beginTransaction();
-			session.saveOrUpdate(PRVO);
+//			session.saveOrUpdate(PRVO);  
+			//跑出此訊息，所以改用下面方法 Illegal attempt to associate a collection with two open sessions
+			session.saveOrUpdate(session.merge(PRVO));
 			session.getTransaction().commit();
 		} catch (RuntimeException ex) {
 			session.getTransaction().rollback();
@@ -30,7 +32,7 @@ public class PunchRecordHibernateDAO implements PunchRecordDAO_interface {
 
 	@Override
 	public void update(PunchRecordVO PRVO) {
-		Session session = HibernateUtil.getSessionFactory().openSession();
+		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
 		try {
 			session.beginTransaction();
 			session.saveOrUpdate(PRVO);
@@ -43,7 +45,7 @@ public class PunchRecordHibernateDAO implements PunchRecordDAO_interface {
 
 	@Override
 	public void delete(Integer pr_no) {
-		Session session = HibernateUtil.getSessionFactory().openSession();
+		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
 		try {
 			session.beginTransaction();
 
@@ -73,24 +75,25 @@ public class PunchRecordHibernateDAO implements PunchRecordDAO_interface {
 	}
 
 	@Override
-	public PunchRecordVO findByPrimaryKey(Integer empno) {
-		PunchRecordVO PRVO = null;
-		Session session = HibernateUtil.getSessionFactory().openSession();
+	public  List<PunchRecordVO> findByPrimaryKey(Integer empno) {
+		List<PunchRecordVO> list = null;
+		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
 		try {
 			session.beginTransaction();
-			PRVO = (PunchRecordVO) session.get(PunchRecordVO.class, empno);
+			Query query = session.createQuery(GET_USER_RECORD+empno);
+			list = query.list();
 			session.getTransaction().commit();
 		} catch (RuntimeException ex) {
 			session.getTransaction().rollback();
 			throw ex;
 		}
-		return PRVO;
+		return list;
 	}
 
 	@Override
 	public List<PunchRecordVO> getAll() {
 		List<PunchRecordVO> list = null;
-		Session session = HibernateUtil.getSessionFactory().openSession();
+		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
 		try {
 			session.beginTransaction();
 			Query query = session.createQuery(GET_ALL_STMT);
@@ -106,7 +109,7 @@ public class PunchRecordHibernateDAO implements PunchRecordDAO_interface {
 	@Override
 	public List<PunchRecordVO> getAll(Map<String, String[]> map) {
 		List<PunchRecordVO> list = null;
-		Session session = HibernateUtil.getSessionFactory().openSession();
+		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
 		try {
 			session.beginTransaction();
 			Query query = session.createQuery(GET_ALL_STMT);
@@ -126,14 +129,15 @@ public class PunchRecordHibernateDAO implements PunchRecordDAO_interface {
 
 		// ● 新增
 		EmployeeVO empVO = new EmployeeVO(); // 部門POJO
-		empVO.setEmp_no(2);
+		EmployeeService empService = new EmployeeService();
+		empVO = empService.getOneEmp(1);
 
-//		 PunchRecordVO PRVO2 = new PunchRecordVO();
-//		 PRVO2.setType_no(1);
-//		 PRVO2.setPr_time(java.sql.Date.valueOf("2001-01-15"));
-//		 PRVO2.setRemarks("ya");
-//		 PRVO2.setEmpVO(empVO);
-//		 dao.insert(PRVO2);
+		 PunchRecordVO PRVO2 = new PunchRecordVO();
+		 PRVO2.setType_no(1);
+		 PRVO2.setPr_time(java.sql.Date.valueOf("2001-01-15"));
+		 PRVO2.setRemarks("ya");
+		 PRVO2.setEmpVO(empVO);
+		 dao.insert(PRVO2);
 
 		// ● 修改
 //		 PunchRecordVO PRVO2 = new PunchRecordVO();
@@ -149,23 +153,25 @@ public class PunchRecordHibernateDAO implements PunchRecordDAO_interface {
 //		 dao.delete(1);
 
 		// ● 查詢-findByPrimaryKey (多方emp2.hbm.xml必須設為lazy="false")(優!)
-//		 PunchRecordVO aEmp = dao.findByPrimaryKey(3);
-//			System.out.print(aEmp.getPr_no() + ",");
-//			System.out.print(aEmp.getType_no() + ",");
-//			System.out.print(aEmp.getPr_time() + ",");
-//			System.out.print(aEmp.getRemarks() + ",");
-//			System.out.print(aEmp.getEmpVO().getName() + ",");
+//		List<PunchRecordVO> aEmp = dao.findByPrimaryKey(2);
+//		for (PunchRecordVO PRVO : aEmp) {
+//			System.out.print(PRVO.getPr_no() + ",");
+//			System.out.print(PRVO.getType_no() + ",");
+//			System.out.print(PRVO.getPr_time() + ",");
+//			System.out.print(PRVO.getRemarks() + ",");
+//			System.out.print(PRVO.getEmpVO().getName() + ",");
 //			System.out.println();
 //		 System.out.println("\n---------------------");
+		
 
 		// ● 查詢-getAll (多方emp2.hbm.xml必須設為lazy="false")(優!)
-		List<PunchRecordVO> list2 = dao.getAll();
-		for (PunchRecordVO PRVO : list2) {
-			System.out.print(PRVO.getPr_no() + ",");
-			System.out.print(PRVO.getATVO().getAt_no() + ",");
-			System.out.print(PRVO.getPr_time() + ",");
-			System.out.print(PRVO.getRemarks() + ",");
-			System.out.println("\n-----------------");
+//		List<PunchRecordVO> list2 = dao.getAll();
+//		for (PunchRecordVO PRVO : list2) {
+//			System.out.print(PRVO.getPr_no() + ",");
+//			System.out.print(PRVO.getType_no() + ",");
+//			System.out.print(PRVO.getPr_time() + ",");
+//			System.out.print(PRVO.getRemarks() + ",");
+//			System.out.println("\n-----------------");
 //			EmployeeVO emp = PRVO.getEmpVO();
 //				System.out.print(emp.getEmp_no() + ",");
 //				System.out.print(emp.getName() + ",");
@@ -182,6 +188,6 @@ public class PunchRecordHibernateDAO implements PunchRecordDAO_interface {
 //				System.out.print(emp.getDepVO().getName() + ",");
 //				System.out.print(emp.getDepVO().getRemarks());
 //				System.out.println();
-		}
+//		}
 	}
 }

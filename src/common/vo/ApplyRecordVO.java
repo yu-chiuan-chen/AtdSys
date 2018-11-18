@@ -3,12 +3,11 @@ package common.vo;
 import java.io.Serializable;
 import java.util.Date;
 
-import com.apply_type.model.ApplyTypeVO;
-import com.employee.model.EmployeeVO;
+import common.vo.ApplyTypeVO;
+import common.vo.EmployeeVO;
 
 public class ApplyRecordVO implements Serializable{
 	private Integer ar_no;
-	private Integer emp_no;
 	private Integer at_no;
 	private Date app_date;
 	private Date sta_time;
@@ -16,17 +15,12 @@ public class ApplyRecordVO implements Serializable{
 	private Integer review;
 	private String  remarks;
 	private String  reason;
+	private EmployeeVO empVO ;
 	public Integer getAr_no() {
 		return ar_no;
 	}
 	public void setAr_no(Integer ar_no) {
 		this.ar_no = ar_no;
-	}
-	public Integer getEmp_no() {
-		return emp_no;
-	}
-	public void setEmp_no(Integer emp_no) {
-		this.emp_no = emp_no;
 	}
 	public Integer getAt_no() {
 		return at_no;
@@ -70,6 +64,11 @@ public class ApplyRecordVO implements Serializable{
 	public void setReason(String reason) {
 		this.reason = reason;
 	}
-	
+	public EmployeeVO getEmpVO() {
+		return empVO;
+	}
+	public void setEmpVO(EmployeeVO empVO) {
+		this.empVO = empVO;
+	}
 	
 }

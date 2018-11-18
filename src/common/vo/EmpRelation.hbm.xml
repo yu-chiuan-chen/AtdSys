@@ -3,7 +3,7 @@
 	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 <hibernate-mapping>
-	<class name="com.emp_relation.model.EmpRelationVO" table="emp_relation">
+	<class name="common.vo.EmpRelationVO" table="emp_relation">
 		<!-- <id name="emp_no,mgr_no" column="emp_no,mgr_no"/> -->
 		<!-- <property name="dir_mgr" column="dir_mgr" /> -->
 

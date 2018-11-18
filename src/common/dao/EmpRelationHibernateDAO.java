@@ -16,7 +16,7 @@ public class EmpRelationHibernateDAO implements EmpRelationDAO_interface {
 
 	@Override
 	public void insert(EmpRelationVO ERVO) {
-		Session session = HibernateUtil.getSessionFactory().openSession();
+		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
 		try {
 			session.beginTransaction();
 			session.saveOrUpdate(ERVO);
@@ -29,7 +29,7 @@ public class EmpRelationHibernateDAO implements EmpRelationDAO_interface {
 
 	@Override
 	public void update(EmpRelationVO ERVO) {
-		Session session = HibernateUtil.getSessionFactory().openSession();
+		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
 		try {
 			session.beginTransaction();
 			session.saveOrUpdate(ERVO);
@@ -42,7 +42,7 @@ public class EmpRelationHibernateDAO implements EmpRelationDAO_interface {
 
 	@Override
 	public void delete(EmpRelationVO ERVO) {
-		Session session = HibernateUtil.getSessionFactory().openSession();
+		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
 		try {
 			session.beginTransaction();
 
@@ -73,7 +73,7 @@ public class EmpRelationHibernateDAO implements EmpRelationDAO_interface {
 	@Override
 	public EmpRelationVO findByPrimaryKey(Integer empno) {
 		EmpRelationVO ERVO = null;
-		Session session = HibernateUtil.getSessionFactory().openSession();
+		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
 		try {
 			session.beginTransaction();
 			ERVO = (EmpRelationVO) session.get(EmpRelationVO.class, empno);
@@ -88,7 +88,7 @@ public class EmpRelationHibernateDAO implements EmpRelationDAO_interface {
 	@Override
 	public List<EmpRelationVO> getAll() {
 		List<EmpRelationVO> list = null;
-		Session session = HibernateUtil.getSessionFactory().openSession();
+		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
 		try {
 			session.beginTransaction();
 			Query query = session.createQuery(GET_ALL_STMT);
@@ -104,7 +104,7 @@ public class EmpRelationHibernateDAO implements EmpRelationDAO_interface {
 	@Override
 	public List<EmpRelationVO> getAll(Map<String, String[]> map) {
 		List<EmpRelationVO> list = null;
-		Session session = HibernateUtil.getSessionFactory().openSession();
+		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
 		try {
 			session.beginTransaction();
 			Query query = session.createQuery(GET_ALL_STMT);

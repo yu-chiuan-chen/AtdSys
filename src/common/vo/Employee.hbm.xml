@@ -3,7 +3,7 @@
 	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 	"http://hibernate.sourceforge.net/hibernate-mapping-5.0.dtd">
 <hibernate-mapping>
-	<class name="com.employee.model.EmployeeVO" table="employee">
+	<class name="common.vo.EmployeeVO" table="employee">
 		<id name="emp_no" column="emp_no" type="java.lang.Integer">
 			<generator class="increment"></generator>
 		</id>
@@ -18,9 +18,25 @@
 		<property name="psw" column="psw" />
 		<property name="is_mgr" column="is_mgr" />
 		<property name="remarks" column="remarks" />
-		<many-to-one name="depVO" class="com.department.model.DepartmentVO" cascade="all"
+		<many-to-one name="depVO" class="common.vo.DepartmentVO" cascade="all"
 			lazy="false">
 			<column name="dep_no" />
 		</many-to-one>
+		
+		<set name="punchRecords" table="punch_record" lazy="false" cascade="all"
+			inverse="true" order-by="emp_no asc">
+			<key>
+				<column name="emp_no" />
+			</key>
+			<one-to-many class="common.vo.PunchRecordVO" />
+		</set>
+		
+		<set name="applyRecords" table="apply_record" lazy="false" cascade="all"
+			inverse="true" order-by="emp_no asc">
+			<key>
+				<column name="emp_no" />
+			</key>
+			<one-to-many class="common.vo.ApplyRecordVO" />
+		</set>
 	</class>
 </hibernate-mapping>

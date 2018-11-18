@@ -18,9 +18,9 @@ import org.hibernate.query.Query;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
-import com.department.model.DepartmentHibernateDAO;
-import com.department.model.DepartmentVO;
-import com.employee.model.EmployeeService;
+import common.dao.DepartmentHibernateDAO;
+import common.vo.DepartmentVO;
+import user.service.EmployeeService;
 
 public class HibernateDemo {
 	// Singleton pattern

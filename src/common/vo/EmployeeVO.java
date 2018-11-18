@@ -1,6 +1,9 @@
 package common.vo;
 
 import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
+
 
 import common.vo.DepartmentVO;
 
@@ -18,7 +21,9 @@ public class EmployeeVO implements java.io.Serializable {
 	private String is_mgr;
 	private String remarks;
 	private DepartmentVO depVO;
-
+	private Set<PunchRecordVO> punchRecords = new HashSet<PunchRecordVO>();
+	private Set<ApplyRecordVO> applyRecords = new HashSet<ApplyRecordVO>();
+	
 	public Integer getEmp_no() {
 		return emp_no;
 	}
@@ -113,5 +118,21 @@ public class EmployeeVO implements java.io.Serializable {
 
 	public void setDepVO(DepartmentVO depVO) {
 		this.depVO = depVO;
+	}
+
+	public Set<PunchRecordVO> getPunchRecords() {
+		return punchRecords;
+	}
+
+	public void setPunchRecords(Set<PunchRecordVO> punchRecords) {
+		this.punchRecords = punchRecords;
+	}
+
+	public Set<ApplyRecordVO> getApplyRecords() {
+		return applyRecords;
+	}
+
+	public void setApplyRecords(Set<ApplyRecordVO> applyRecords) {
+		this.applyRecords = applyRecords;
 	}
 }

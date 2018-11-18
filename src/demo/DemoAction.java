@@ -16,7 +16,7 @@ import org.hibernate.Transaction;
 import org.springframework.web.context.WebApplicationContext;
 import org.springframework.web.context.support.WebApplicationContextUtils;
 
-import com.hibernate.util.HibernateUtil;
+import common.utils.HibernateUtil;
 import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.ModelDriven;
 
@@ -84,7 +84,7 @@ public class DemoAction extends ActionSupport
 		// Spring接管後，不再需要自行getBean
 		// 以下同以往做法
 		//SessionFactory sf = (SessionFactory) wc.getBean("sessionFactory");
-		//Session ss = sf.openSession();
+		//Session ss = sf.getCurrentSession();
 		
 		//HibernateUtil hb = (HibernateUtil) wc.getBean("hbUtil");
 		Session ss = HibernateUtil.getSessionFactory().getCurrentSession();

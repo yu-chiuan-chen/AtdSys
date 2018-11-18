@@ -22,14 +22,129 @@
 		</result-types>
 	</package>
 	
-	<package name="demo" namespace="/demo" extends="atd-foundation" strict-method-invocation="false">
-		<action name="*/*" class="{1}SpringAction" method="{2}">
-			<result type="tiles">demo.{1}.{2}</result>
+<!-- 	<package name="demo" namespace="/demo" extends="atd-foundation" strict-method-invocation="false"> -->
+<!-- 		<action name="*/*" class="{1}SpringAction" method="{2}"> -->
+<!-- 			<result type="tiles">demo.{1}.{2}</result> -->
+<!-- 			<result name="json" type="json"> -->
+<!-- 				<param name="excludeNullProperties">true</param> -->
+<!-- 				<param name="root">jsonResult</param> -->
+<!-- 			</result> -->
+<!-- 		</action> -->
+
+<!-- 	</package> -->
+	
+<!-- 	<package name="myPackage" namespace="/atd/common/jsp/user" -->
+<!-- 		extends="struts-default,json-default"> -->
+
+<!-- 		<action name="loginAction" class="user.controller.LoginAction"> -->
+<!-- 			<result name="success">/hello.jsp</result> -->
+			<!-- <result name="error">/error.jsp</result> -->
+<!-- 			<result name="json" type="json"> -->
+<!-- 				<param name="root">model</param> -->
+<!-- 				//用ajax回來的name都是root，而model就是return的東西 -->
+<!-- 			</result> -->
+<!-- 		</action> -->
+<!-- 	</package> -->
+
+<!-- ************************-->
+<!-- 	<package name="myPackageAaa" extends="atd-foundation" namespace="/atd/common" -->
+<!-- 		strict-method-invocation="false"> -->
+
+<!-- 		<action name="*/*" class="user.controller.{1}Action" method="{2}"> -->
+<!-- 			<result type="tiles">login.{1}.{2}</result> -->
+<!-- 			<result name="error">/error.jsp</result> -->
+<!-- 		</action> -->
+<!-- 		<action name="*/*" class="{1}SpringAction" method="{2}"> -->
+<!-- 			<result type="tiles">demo.{1}.{2}</result> -->
+<!-- 			<result name="json" type="json"> -->
+<!-- 				<param name="excludeNullProperties">true</param> -->
+<!-- 				<param name="root">jsonResult</param> -->
+<!-- 			</result> -->
+<!-- 		</action> -->
+<!-- 	</package> -->
+	
+	
+	
+	
+	
+	
+	
+	<!-- 	<package name="demo" namespace="/demo" extends="atd-foundation" strict-method-invocation="false"> -->
+<!-- 		<action name="*/*" class="{1}SpringAction" method="{2}"> -->
+	
+
+<!-- 	<package name="defaultDemo" extends="atd-foundation" namespace="/atd/common/jsp"  -->
+	<package name="defaultLogin" extends="atd-foundation,json-default" namespace="/atd/common/js" 
+	strict-method-invocation="false" >
+
+     <action name="*/*" class="user.controller.{1}Action" method="{2}">
 			<result name="json" type="json">
-				<param name="excludeNullProperties">true</param>
-				<param name="root">jsonResult</param>
+				<param name="root">model</param>
+<!-- 				//用ajax回來的name都是root，而model就是return的東西 -->
+			</result>
+      </action>
+
+   </package>
+   
+   
+   <package name="defaultTiles" extends="atd-foundation" namespace="/atd/common" 
+	strict-method-invocation="false" >
+      <result-types>
+         <result-type name="tiles" 
+         class="org.apache.struts2.views.tiles.TilesResult" />
+      </result-types>
+
+     <action name="*/*" class="user.controller.{1}Action" method="{2}">
+			<result name="success" type="tiles">login.{1}.{2}</result>
+      </action>
+
+   </package>
+	
+	
+	
+	
+	
+
+	
+	
+	
+	
+<!-- 	******************* -->
+<!-- 	<package name="myPackage2" namespace="/atd/users/js" -->
+	<package name="myPackage2" namespace="/atd/Index"
+		extends="struts-default,json-default">
+
+		<action name="onDutyAction" class="user.controller.OnDutyAction">
+			<result name="json" type="json">
+				<param name="root">result</param>
 			</result>
 		</action>
+			<action name="offDutyAction" class="user.controller.OffDutyAction">
+			<result name="json" type="json">
+				<param name="root">result</param>
+			</result>
+		</action>
+		<action name="logOutAction" class="user.controller.LogOutAction">
+			<result name="json" type="json">
+				<param name="root">result</param>
+			</result>
+		</action>
+		<action name="getUserRecordAction" class="user.controller.GetUserRecord">
+			<result name="json" type="json">
+				<param name="root">result</param>
+			</result>
+		</action>
+		<action name="addapplyRecordAction" class="user.controller.AddApplyRecordAction">
+			<result name="json" type="json">
+				<param name="root">result</param>
+			</result>
+		</action>
+		<action name="getApplyTypeAction" class="user.controller.GetApplyTypeAction">
+			<result name="json" type="json">
+				<param name="root">result</param>
+			</result>
+		</action>
+		
 
 	</package>
   
