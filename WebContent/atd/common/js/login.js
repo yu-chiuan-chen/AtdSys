@@ -12,7 +12,6 @@ $(function() {
 			},
 //			contentType : "application/json",
 			success : function(data) {
-				alert("@@@@@");
 				if (data.status.match('success')) {
 					$('#form1').submit();
 				} else {
@@ -22,7 +21,6 @@ $(function() {
 			},
 
 			error : function(xhr, ajaxOptions, thrownError) {
-				alert("%%%%%%%%%%%%%%");
 				alert(xhr.status);
 				alert(thrownError);
 			}

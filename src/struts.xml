@@ -64,7 +64,27 @@
 <!-- 	</package> -->
 	
 	
-	
+	<package name="defaultTiles" extends="atd-foundation,json-default" namespace="/atd/userss" 
+		strict-method-invocation="false" >
+      	<result-types>
+         	<result-type name="tiles" 
+         	class="org.apache.struts2.views.tiles.TilesResult" />
+      	</result-types>
+
+     	<action name="*/*" class="user.controller.{1}Action" method="{2}">
+			<result name="login" type="tiles">login.{1}.{2}</result>
+			<result name="LogOut" type="json">logoutmap</result>
+			<result name="onDuty" type="json">ondutymap</result>
+			<result name="offDuty" type="json">offdutymap</result>
+
+<!-- 			<result type="json">result</result> -->
+			
+			<result name="getUserRecordAction" type="json">recordmap</result>
+			<result name="getApplyType" type="json">typemap</result>
+			<result name="addapplyRecord" type="json">addapplymap</result>
+      	</action>
+
+   </package>
 	
 	
 	
@@ -86,19 +106,7 @@
 
    </package>
    
-   
-   <package name="defaultTiles" extends="atd-foundation" namespace="/atd/common" 
-	strict-method-invocation="false" >
-      <result-types>
-         <result-type name="tiles" 
-         class="org.apache.struts2.views.tiles.TilesResult" />
-      </result-types>
 
-     <action name="*/*" class="user.controller.{1}Action" method="{2}">
-			<result name="success" type="tiles">login.{1}.{2}</result>
-      </action>
-
-   </package>
 	
 	
 	

@@ -34,7 +34,7 @@
   <!-- 登入首頁開始 -->
 <%-- 			<form METHOD="post" ACTION="<%=request.getContextPath()%>/atd/users/jsp/index.jsp" id="form1" namespace="/aaa">	 --%>
 <%-- 			<form METHOD="post" ACTION="<%=request.getContextPath()%>/atd/Index/aaa.jsp" id="form1">	 --%>
-			<form METHOD="post" ACTION="<%=request.getContextPath()%>/atd/Index/init.jsp" id="form1">	
+			<form METHOD="post" ACTION="<%=request.getContextPath()%>/atd/userss/Index/init.action" id="form1">	
 				<div class="container" style="width:500px;margin-top:100px; ">
 						
 					    <div class="panel" id="login" >

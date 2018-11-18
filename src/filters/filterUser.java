@@ -33,7 +33,10 @@ public class filterUser implements Filter {
 		EmployeeVO user = (EmployeeVO) session.getAttribute("userVO");
 		System.out.println("進入filter");
 		if (user == null) {
+			System.out.println("準備倒出");
+			System.out.println("req.getContextPath()=" + req.getContextPath());
 			res.sendRedirect(req.getContextPath() + "/atd/common/login.jsp");
+//			req.getRequestDispatcher(req.getContextPath() + "/atd/common/login.jsp").forward(req, res);
 			return;
 		} else {
 			chain.doFilter(request, response);

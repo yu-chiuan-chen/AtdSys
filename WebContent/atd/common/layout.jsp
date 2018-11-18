@@ -1,4 +1,5 @@
 <%@page import="common.vo.EmployeeVO"%>
+<%@ taglib uri="http://tiles.apache.org/tags-tiles" prefix="tiles"%>
 <%@ page language="java" contentType="text/html; charset=utf-8"
 	pageEncoding="utf-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -88,7 +89,7 @@ pageContext.setAttribute("userVO",userVO);
 			</div>
 		</div>
 
-	<tiles:insertAttribute name="body"/> 
+	<tiles:insertAttribute name="body" />
 	</div>
 </body>
 </html>
@@ -102,8 +103,8 @@ pageContext.setAttribute("userVO",userVO);
 <!-- 行事曆 -->
 <script src="<%=request.getContextPath()%>/atd/common/js/moment.js"></script>
 <script src="<%=request.getContextPath()%>/atd/common/js/FullCalendar.js"></script>
-<script src="<%=request.getContextPath()%>/atd/users/js/index.js"></script>
-<script src="<%=request.getContextPath()%>/atd/users/js/socketTest.js"></script>
+<script src="<%=request.getContextPath()%>/atd/common/js/index.js"></script>
+<script src="<%=request.getContextPath()%>/atd/common/js/socketTest.js"></script>
 <script>
 console.log('in~~~~~~layout.jsp!!!!!!!!!!!!!!!!!!!!!!!!!!!!!');
 
