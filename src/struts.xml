@@ -72,6 +72,7 @@
       	</result-types>
 
      	<action name="*/*" class="user.controller.{1}Action" method="{2}">
+			<result type="tiles">login.{1}.{2}</result>
 			<result name="login" type="tiles">login.{1}.{2}</result>
 			<result name="LogOut" type="json">logoutmap</result>
 			<result name="onDuty" type="json">ondutymap</result>

@@ -15,6 +15,7 @@
 	<definition name="WILDCARD:login.*.*" template="/atd/common/layout.jsp">
 		<put-attribute name="title" value="This is goodjob!" />
 		<put-attribute name="body" value="/atd/userss/{1}/{2}.jsp" />
+		<put-attribute name="js" value="/atd/userss/{1}/{2}_js.jsp" />
 	</definition>
 
 </tiles-definitions>	

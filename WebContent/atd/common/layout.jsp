@@ -70,6 +70,7 @@ pageContext.setAttribute("userVO",userVO);
 			<button type="button" id="offDuty" class="btn btn-primary">下班打卡</button>
 			<button type="button" id="applyLeaveBtn" class="btn btn-primary" data-toggle="modal" data-target="#applyLeaveModal" data-whatever="@mdo">請假申請</button>
 			<button type="button" id="logOut" class="btn btn-primary">登出</button>
+			<input type="button" id="commentBtn" class="btn btn-primary" onClick="location.href='<%=request.getContextPath()%>/atd/userss/Comment/init.do'" value="留言板">
 			<textarea id="messagesArea" style="" readonly ></textarea>
 			<lable id="emp_name1" >發言者：${userVO.name}</lable>
 			<input type="hidden" id="emp_no" value="${userVO.emp_no}"/>
@@ -91,6 +92,7 @@ pageContext.setAttribute("userVO",userVO);
 
 	<tiles:insertAttribute name="body" />
 	</div>
+	<form id="psuedoForm"></form>
 </body>
 </html>
 <script type='text/javascript'	src='http://code.jquery.com/jquery-1.9.1.min.js'></script>
@@ -105,6 +107,7 @@ pageContext.setAttribute("userVO",userVO);
 <script src="<%=request.getContextPath()%>/atd/common/js/FullCalendar.js"></script>
 <script src="<%=request.getContextPath()%>/atd/common/js/index.js"></script>
 <script src="<%=request.getContextPath()%>/atd/common/js/socketTest.js"></script>
+<tiles:insertAttribute name="js" />
 <script>
 console.log('in~~~~~~layout.jsp!!!!!!!!!!!!!!!!!!!!!!!!!!!!!');
 
@@ -117,7 +120,5 @@ $(function() {
 		indexJs.init(context); 
 // 		$('#element_id').cxCalendar();		
 });  
-
-
 
 </script>
